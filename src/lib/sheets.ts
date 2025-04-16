@@ -23,7 +23,7 @@ export const addMealEntry = async (entry: MealEntry) => {
 
         console.log('Submitting form data:', Object.fromEntries(formData));
 
-        const response = await fetch(
+        await fetch(
             `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`,
             {
                 method: 'POST',
@@ -61,7 +61,7 @@ export const getMealEntries = async () => {
 
         return rows
             .map(row => {
-                const [Timestamp, date, lunch, dinner] = row.split(',').map(cell => cell.replace(/"/g, ''));
+                const [, date, lunch, dinner] = row.split(',').map(cell => cell.replace(/"/g, ''));
                 return {
                     date: date || '',
                     lunch: parseInt(lunch) || 0,

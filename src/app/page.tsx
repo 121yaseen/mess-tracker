@@ -79,7 +79,7 @@ export default function Home() {
         setMessage(data.error || 'Error adding entry. Please try again.');
       }
     } catch (error) {
-      setMessage('Error adding entry. Please try again.');
+      setMessage('Error adding entry. Please try again.' + error);
     } finally {
       setLoading(false);
     }
